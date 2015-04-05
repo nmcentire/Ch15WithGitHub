@@ -5,16 +5,30 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private static final String TAG = "Ch15";
 
+    ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        //setContentView(R.layout.activity_main);
+
+        listView = new ListView(this);
+        setContentView(listView);
+
+        String[] rowNames = { "Red", "Green", "Blue"};
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(this,android.R.layout.simple_expandable_list_item_1,rowNames);
+        listView.setAdapter(adapter);
+
 
         Log.v(TAG, "Verbose");
         Log.i(TAG, "Information");
